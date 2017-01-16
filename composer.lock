@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "796f7befb94578b2aab96e7194473a4a",
-    "content-hash": "baf51851e923a773249c1177c68423da",
+    "hash": "b47b2d0c343bda6b852f8cd8a2edb2d4",
+    "content-hash": "5125db1cc76d26a9a521effc02da7969",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1043,6 +1043,62 @@
                 "psr-3"
             ],
             "time": "2016-10-10 12:19:37"
+        },
+        {
+            "name": "qafoolabs/no-framework-bundle",
+            "version": "v2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/QafooLabs/QafooLabsNoFrameworkBundle.git",
+                "reference": "b5ac4ff0cefcce804c56c73f1f4e4b8f886d38fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/QafooLabs/QafooLabsNoFrameworkBundle/zipball/b5ac4ff0cefcce804c56c73f1f4e4b8f886d38fa",
+                "reference": "b5ac4ff0cefcce804c56c73f1f4e4b8f886d38fa",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jms/serializer": "*",
+                "phake/phake": "*",
+                "phpunit/phpunit": "^4.0",
+                "sensio/framework-extra-bundle": "~3.0",
+                "symfony/form": "^2.3|^3.0",
+                "symfony/framework-bundle": "^2.6|^3.0",
+                "symfony/security-core": "^2.6|^3.0"
+            },
+            "suggest": {
+                "sensio/framework-extra-bundle": "~3.0 required",
+                "symfony/framework-bundle": "^2.6|^3.0 required",
+                "symfony/security-core": "^2.6|^3.0 required"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "QafooLabs\\Bundle\\NoFrameworkBundle\\": "src/",
+                    "QafooLabs\\MVC\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Pichler",
+                    "email": "manuel@qafoo.com"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "benjamin@qafoo.com"
+                }
+            ],
+            "description": "Various improvements for Symfony applications",
+            "keywords": [
+                "bundle",
+                "symfony"
+            ],
+            "time": "2016-05-08 08:37:24"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -3389,6 +3445,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "qafoolabs/no-framework-bundle": 0,
         "phpunit/phpunit": 0,
         "phpmd/phpmd": 0,
         "pdepend/pdepend": 0,
