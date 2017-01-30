@@ -6,7 +6,7 @@ This is an example repository with a minimized Symfony 3 installation.
 
 First run:
 
-    composer install
+    php composer.phar install
 
 Afterwards you can "use" this by executing:
 
