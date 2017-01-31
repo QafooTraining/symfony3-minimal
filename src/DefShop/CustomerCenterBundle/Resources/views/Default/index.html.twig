@@ -1,0 +1,13 @@
+{% extends "DefShopCustomerCenterBundle::layout.html.twig" %}
+
+{%  block content %}
+    <h1>Hello {{ name }}!</h1>
+
+    <p>Your address:
+        <pre>
+            {{ address.street }}
+            {{ address.zip }} {{ address.city }}
+            {{ address.country }}
+        </pre>
+    </p>
+{%  endblock %}

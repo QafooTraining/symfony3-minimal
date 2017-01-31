@@ -1,0 +1,3 @@
+def_shop_customer_center:
+    resource: "@DefShopCustomerCenterBundle/Resources/config/routing.xml"
+    prefix:   /
