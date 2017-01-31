@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="DefShop\CustomerCenterBundle\Entity\Address" table="address">
+        <id name="id" column="a_id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" column="a_name" type="string" />
+        <field name="street" column="a_street" type="string" />
+        <field name="zip" column="a_zip" type="integer" />
+        <field name="city" column="a_city" type="string" />
+    </entity>
+</doctrine-mapping>

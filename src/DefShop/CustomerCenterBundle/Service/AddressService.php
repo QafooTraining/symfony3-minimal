@@ -2,6 +2,8 @@
 
 namespace DefShop\CustomerCenterBundle\Service;
 
+use DefShop\CustomerCenterBundle\Entity\Address;
+
 class AddressService
 {
     private $addresses = [
