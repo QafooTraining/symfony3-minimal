@@ -46,9 +46,16 @@
 
         <service id="CustomerCenter.Controller.PersonParamConverter"
                  class="DefShop\CustomerCenterBundle\Controller\ParameterConverter\PersonParamConverter">
-            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="CustomerCenter.DataManager.PersonDataManager" />
 
-            <tag name="request.param_converter" priority="-1000" />
+            <tag name="request.param_converter" priority="1000" />
+        </service>
+
+        <service id="CustomerCenter.Controller.AddressParamConverter"
+                 class="DefShop\CustomerCenterBundle\Controller\ParameterConverter\AddressParamConverter">
+            <argument type="service" id="CustomerCenter.DataManager.AddressDataManager" />
+
+            <tag name="request.param_converter" priority="1000" />
         </service>
     </services>
 </container>

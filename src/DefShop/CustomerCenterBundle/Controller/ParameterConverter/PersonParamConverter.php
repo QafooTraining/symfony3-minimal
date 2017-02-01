@@ -2,39 +2,34 @@
 
 namespace DefShop\CustomerCenterBundle\Controller\ParameterConverter;
 
+use DefShop\CustomerCenterBundle\DataManager\PersonDataManager;
 use DefShop\CustomerCenterBundle\Entity\Person;
-use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class PersonParamConverter implements ParamConverterInterface
 {
-    private $entityManager;
+    private $personDataManager;
 
-    public function __construct(EntityManager $entityManager)
+    public function __construct(PersonDataManager $personDataManager)
     {
-        $this->entityManager = $entityManager;
+        $this->personDataManager = $personDataManager;
     }
 
     public function apply(Request $request, ParamConverter $configuration)
     {
         $personId = $request->attributes->get($configuration->getName());
-
-        $personRepository = $this->entityManager->getRepository(Person::class);
-        $person = $personRepository->find($personId);
-
-        if (!$person) {
-            throw new \OutOfBoundsException("Could not find person with id $personId");
+        if (!$personId) {
+            return false;
         }
 
-        $request->attributes->set($configuration->getName(), $person);
+        $request->attributes->set($configuration->getName(), $this->personDataManager->get($personId));
         return true;
     }
 
     public function supports(ParamConverter $configuration)
     {
-        var_dump(__METHOD__);
         return Person::class === $configuration->getClass();
     }
 }
