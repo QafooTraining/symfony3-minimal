@@ -9,9 +9,13 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="name" column="a_name" type="string" />
         <field name="street" column="a_street" type="string" />
         <field name="zip" column="a_zip" type="integer" />
         <field name="city" column="a_city" type="string" />
+        <field name="country" column="a_country" type="string" />
+
+        <many-to-one field="person" target-entity="DefShop\CustomerCenterBundle\Entity\Person" inversed-by="addresses">
+            <join-column name="p_id" referenced-column-name="p_id" />
+        </many-to-one>
     </entity>
 </doctrine-mapping>

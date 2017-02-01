@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="DefShop\CustomerCenterBundle\Repository\PersonRepository" name="DefShop\CustomerCenterBundle\Entity\Person">
+        <id name="id" type="integer" column="p_id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="name" type="string" column="p_name" length="255"/>
+
+        <one-to-many field="addresses" target-entity="DefShop\CustomerCenterBundle\Entity\Address" mapped-by="person">
+            <cascade>
+                <cascade-remove />
+            </cascade>
+            <order-by>
+                <order-by-field name="zip" direction="ASC" />
+            </order-by>
+        </one-to-many>
+    </entity>
+</doctrine-mapping>

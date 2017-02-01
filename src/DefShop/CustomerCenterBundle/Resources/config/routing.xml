@@ -8,11 +8,15 @@
         <default key="_controller">DefShopCustomerCenterBundle:Default:index</default>
     </route>
 
-    <route id="defshop.customer_center.doctrine_demo" path="/">
-        <default key="_controller">DefShopCustomerCenterBundle:Doctrine:index</default>
+    <route id="defshop.customer_center.person" path="/">
+        <default key="_controller">DefShopCustomerCenterBundle:Person:index</default>
     </route>
 
-    <route id="defshop.customer_center.doctrine_demo.remove" path="/remove/{addressId}">
-        <default key="_controller">DefShopCustomerCenterBundle:Doctrine:remove</default>
+    <route id="defshop.customer_center.address" path="/person/{personId}">
+        <default key="_controller">DefShopCustomerCenterBundle:Address:index</default>
+    </route>
+
+    <route id="defshop.customer_center.address.remove" path="/person/{personId}/{addressId}">
+        <default key="_controller">DefShopCustomerCenterBundle:Address:remove</default>
     </route>
 </routes>

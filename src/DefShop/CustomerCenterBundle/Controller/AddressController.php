@@ -3,20 +3,26 @@
 namespace DefShop\CustomerCenterBundle\Controller;
 
 use DefShop\CustomerCenterBundle\Entity\Address;
+use DefShop\CustomerCenterBundle\Entity\Person;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DoctrineController extends Controller
+class AddressController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction($personId, Request $request)
     {
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
+
+        $personRepository = $entityManager->getRepository(Person::class);
+        $person = $personRepository->find($personId);
+
         if ($request->getMethod() === 'POST') {
             $address = new Address();
-            $address->name = $request->get('name');
             $address->street = $request->get('street');
             $address->zip = $request->get('zip');
             $address->city = $request->get('city');
+            $address->country = $request->get('country');
+            $address->person = $person;
 
             $entityManager->persist($address);
             $entityManager->flush();
@@ -25,7 +31,7 @@ class DoctrineController extends Controller
         $addressRepository = $entityManager->getRepository(Address::class);
 
         return [
-            'addresses' => $addressRepository->findAll(),
+            'person' => $person,
         ];
     }
 
