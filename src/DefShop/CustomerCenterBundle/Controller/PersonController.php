@@ -10,20 +10,16 @@ class PersonController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $request->setLocale('en');
-        $entityManager = $this->get('doctrine.orm.default_entity_manager');
+        $personService = $this->get('CustomerCenter.Domain.PersonService');
         if ($request->getMethod() === 'POST') {
             $person = new Person();
             $person->name = $request->get('name');
 
-            $entityManager->persist($person);
-            $entityManager->flush();
+            $personService->store($person);
         }
 
-        $personRepository = $entityManager->getRepository(Person::class);
-
         return [
-            'persons' => $personRepository->findAll(),
+            'persons' => $personService->getAll(),
         ];
     }
 }

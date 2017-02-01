@@ -14,6 +14,23 @@
                  class="DefShop\CustomerCenterBundle\Domain\AddressService">
         </service>
 
+        <service id="CustomerCenter.Domain.PersonService"
+                 class="DefShop\CustomerCenterBundle\Domain\PersonService">
+            <argument type="service" id="CustomerCenter.DataManager.PersonDataManager" />
+        </service>
+
+        <service id="CustomerCenter.DataManager.PersonDataManager"
+                 class="DefShop\CustomerCenterBundle\DataManager\PersonDataManager">
+            <argument type="service">
+                <service class="Doctrine\ORM\EntityRepository">
+                    <factory service="doctrine.orm.default_entity_manager"
+                             method="getRepository" />
+                    <argument>DefShop\CustomerCenterBundle\Entity\Person</argument>
+                </service>
+            </argument>
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
         <service id="CustomerCenter.Controller.PersonParamConverter"
                  class="DefShop\CustomerCenterBundle\Controller\ParameterConverter\PersonParamConverter">
             <argument type="service" id="doctrine.orm.entity_manager" />

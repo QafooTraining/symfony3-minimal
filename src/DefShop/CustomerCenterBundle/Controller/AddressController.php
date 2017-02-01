@@ -11,8 +11,6 @@ class AddressController extends Controller
 {
     public function indexAction(Person $person, Request $request)
     {
-        $entityManager = $this->get('doctrine.orm.default_entity_manager');
-
         if ($request->getMethod() === 'POST') {
             $address = new Address();
             $address->street = $request->get('street');
@@ -21,8 +19,8 @@ class AddressController extends Controller
             $address->country = $request->get('country');
             $address->person = $person;
 
-            $entityManager->persist($address);
-            $entityManager->flush();
+            $addressService = $this->get('CustomerCenter.Domain.AddressService');
+            $addressService->store($address);
 
             return $this->redirectToRoute('CustomerCenter.Address.index', ['person' => $person->id]);
         }
@@ -34,10 +32,8 @@ class AddressController extends Controller
 
     public function removeAction(Person $person, Address $address)
     {
-        $entityManager = $this->get('doctrine.orm.default_entity_manager');
-
-        $entityManager->remove($address);
-        $entityManager->flush();
+        $addressService = $this->get('CustomerCenter.Domain.AddressService');
+        $addressService->remove($address);
 
         return $this->redirectToRoute('CustomerCenter.Address.index', ['person' => $person->id]);
     }
