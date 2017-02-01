@@ -26,16 +26,16 @@ class AddressController extends Controller
 
             $entityManager->persist($address);
             $entityManager->flush();
-        }
 
-        $addressRepository = $entityManager->getRepository(Address::class);
+            return $this->redirectToRoute('defshop.customer_center.address', ['personId' => $personId]);
+        }
 
         return [
             'person' => $person,
         ];
     }
 
-    public function removeAction($addressId)
+    public function removeAction($personId, $addressId)
     {
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
         $addressRepository = $entityManager->getRepository(Address::class);
@@ -43,6 +43,6 @@ class AddressController extends Controller
         $entityManager->remove($address);
         $entityManager->flush();
 
-        return $this->redirectToRoute('defshop.customer_center.doctrine_demo');
+        return $this->redirectToRoute('defshop.customer_center.address', ['personId' => $personId]);
     }
 }
