@@ -2,6 +2,7 @@
 
 namespace DefShop\CustomerCenterBundle\DataManager;
 
+use DefShop\CustomerCenterBundle\Entity\Address;
 use DefShop\CustomerCenterBundle\Entity\Person;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -20,12 +21,15 @@ class PersonDataManager
 
     public function get($personId)
     {
-        $person = $this->repository->find($personId);
-        if (!$person) {
-            throw new \OutOfBoundsException("No person with $personId found.");
-        }
+        $query = $this->entityManager->createQuery(
+            'SELECT p, a FROM ' . Person::class . ' p
+                LEFT JOIN p.addresses a
+            WHERE p.id = :id
+            ORDER BY a.zip ASC'
+        );
+        $query->setParameter('id', $personId);
 
-        return $person;
+        return $query->getSingleResult();
     }
 
     public function getAll()
