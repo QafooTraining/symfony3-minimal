@@ -10,6 +10,7 @@ class PersonController extends Controller
 {
     public function indexAction(Request $request)
     {
+        $request->setLocale('en');
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
         if ($request->getMethod() === 'POST') {
             $person = new Person();

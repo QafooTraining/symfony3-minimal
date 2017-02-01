@@ -11,7 +11,7 @@
             {{ address.zip }} {{ address.city }}<br />
             {{ address.country }}
             <a class="btn btn-xs btn-danger"
-               href="{{ path('defshop.customer_center.address.remove', {personId: person.id, addressId: address.id }) }}">
+               href="{{ path('CustomerCenter.Address.remove', {person: person.id, address: address.id }) }}">
                 x
             </a><br />
         </li>
@@ -21,7 +21,7 @@
     </ul>
 
     <h2>Weitere Adresse hinzufügen</h2>
-    <form action="{{ path('defshop.customer_center.address', {personId: person.id}) }}" method="POST">
+    <form action="{{ path('CustomerCenter.Address.index', {person: person.id}) }}" method="POST">
         <div class="form-group">
             <label>Strasse</label>
             <input type="text" class="form-control" name="street" placeholder="Strasse">

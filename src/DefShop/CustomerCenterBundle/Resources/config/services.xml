@@ -10,8 +10,15 @@
     -->
 
     <services>
-        <service id="defshop.customer_center.address_service"
-                 class="DefShop\CustomerCenterBundle\Service\AddressService">
+        <service id="CustomerCenter.Domain.AddressService"
+                 class="DefShop\CustomerCenterBundle\Domain\AddressService">
+        </service>
+
+        <service id="CustomerCenter.Controller.PersonParamConverter"
+                 class="DefShop\CustomerCenterBundle\Controller\ParameterConverter\PersonParamConverter">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+
+            <tag name="request.param_converter" priority="-1000" />
         </service>
     </services>
 </container>

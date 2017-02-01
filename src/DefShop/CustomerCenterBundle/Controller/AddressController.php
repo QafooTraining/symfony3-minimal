@@ -9,12 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AddressController extends Controller
 {
-    public function indexAction($personId, Request $request)
+    public function indexAction(Person $person, Request $request)
     {
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-
-        $personRepository = $entityManager->getRepository(Person::class);
-        $person = $personRepository->find($personId);
 
         if ($request->getMethod() === 'POST') {
             $address = new Address();
@@ -27,7 +24,7 @@ class AddressController extends Controller
             $entityManager->persist($address);
             $entityManager->flush();
 
-            return $this->redirectToRoute('defshop.customer_center.address', ['personId' => $personId]);
+            return $this->redirectToRoute('CustomerCenter.Address.index', ['person' => $person->id]);
         }
 
         return [
@@ -35,14 +32,13 @@ class AddressController extends Controller
         ];
     }
 
-    public function removeAction($personId, $addressId)
+    public function removeAction(Person $person, Address $address)
     {
         $entityManager = $this->get('doctrine.orm.default_entity_manager');
-        $addressRepository = $entityManager->getRepository(Address::class);
-        $address = $addressRepository->find($addressId);
+
         $entityManager->remove($address);
         $entityManager->flush();
 
-        return $this->redirectToRoute('defshop.customer_center.address', ['personId' => $personId]);
+        return $this->redirectToRoute('CustomerCenter.Address.index', ['person' => $person->id]);
     }
 }

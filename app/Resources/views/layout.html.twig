@@ -22,13 +22,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Community Center</a>
+            <a class="navbar-brand" href="{{ path('CustomerCenter.Person.index') }}">Community Center</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 {% block navitems %}
-                    <li><a href="{{ path('defshop.customer_center.service_demo', {name: "kore"}) }}">Service Demo</a></li>
-                    <li><a href="{{ path('defshop.customer_center.person') }}">Doctrine Demo</a></li>
+                    <li><a href="{{ path('CustomerCenter.Default.index', {name: "kore"}) }}">Service Demo</a></li>
+                    <li><a href="{{ path('CustomerCenter.Person.index') }}">Doctrine Demo</a></li>
                 {% endblock %}
             </ul>
         </div>

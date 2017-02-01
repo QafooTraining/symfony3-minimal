@@ -1,6 +1,6 @@
 <?php
 
-namespace DefShop\CustomerCenterBundle\Service;
+namespace DefShop\CustomerCenterBundle\Domain;
 
 use DefShop\CustomerCenterBundle\Entity\Address;
 

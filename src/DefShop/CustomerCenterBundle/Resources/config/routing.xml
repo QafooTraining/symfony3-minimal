@@ -4,19 +4,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="defshop.customer_center.service_demo" path="/hello/{name}">
+    <route id="CustomerCenter.Default.index" path="/hello/{name}">
         <default key="_controller">DefShopCustomerCenterBundle:Default:index</default>
     </route>
 
-    <route id="defshop.customer_center.person" path="/">
+    <route id="CustomerCenter.Person.index" path="/">
         <default key="_controller">DefShopCustomerCenterBundle:Person:index</default>
     </route>
 
-    <route id="defshop.customer_center.address" path="/person/{personId}">
+    <route id="CustomerCenter.Address.index" path="/person/{person}">
         <default key="_controller">DefShopCustomerCenterBundle:Address:index</default>
     </route>
 
-    <route id="defshop.customer_center.address.remove" path="/person/{personId}/{addressId}">
+    <route id="CustomerCenter.Address.remove" path="/person/{person}/{address}">
         <default key="_controller">DefShopCustomerCenterBundle:Address:remove</default>
     </route>
 </routes>

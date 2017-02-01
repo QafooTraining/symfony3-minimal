@@ -8,7 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        $addressService = $this->get('defshop.customer_center.address_service');
+        $addressService = $this->get('CustomerCenter.Domain.AddressService');
 
         return [
             'name' => $name,
